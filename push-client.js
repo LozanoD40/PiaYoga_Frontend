@@ -1,5 +1,5 @@
 // push-client.js (frontend)
-const publicVapidKey = 'PUBLIC_KEY' // pega VAPID_PUBLIC que generaste
+const publicVapidKey = 'PUBLIC_KEY' 
 
 // utility to urlBase64ToUint8Array (necesario por la API)
 function urlBase64ToUint8Array(base64String) {
@@ -36,7 +36,7 @@ export async function subscribeUser() {
 
   // enviar al backend
   const token = localStorage.getItem('token') // o tu método de auth
-  await fetch('https://<TU_BACKEND_RENDER>/api/push/subscribe', {
+  await fetch('https://http://localhost:3000/api/push/subscribe', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -1,0 +1,15 @@
+.footer {
+  border-top: 2px solid var(--color-border);
+  padding: 10px 20px;
+  font-size: var(--font-size-footer);
+  background-color: var(--color-bg-accent);
+  color: var(--color-text-tertiary);
+  font-family: var(--font-main);
+  text-align: center;
+  margin-top: auto;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+  .footer { padding: clamp(10px, 3vw, 18px); font-size: 0.9rem; }
+}

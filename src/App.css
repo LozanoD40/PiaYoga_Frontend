@@ -1,42 +1,95 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Tipografías correctamente importadas */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Lora:wght@400;500;600;700&display=swap');
+
+/* Animaciones suaves y orgánicas */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(155, 89, 182, 0.4); /* violeta suave */
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(155, 89, 182, 0.7);
+  }
 }
 
-@keyframes logo-spin {
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(5px);
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
 
-.card {
-  padding: 2em;
+/* PALETA 2 aplicada (Zen & Espiritual) */
+:root {
+  --color-bg-main: #FFFFFF;        /* Fondo principal */
+  --color-bg-secondary: #E8DAEF;   /* Lavanda suave */
+  --color-bg-accent: #9B59B6;      /* Violeta medio (navbar, botones principales) */
+  --color-bg-alt: #27AE60;         /* Verde hoja (botones secundarios, acentos) */
+  
+  --color-text-primary: #4A235A;   /* Títulos en violeta profundo */
+  --color-text-secondary: #000000; /* Texto general */
+  --color-text-tertiary: #FFFFFF;  /* Texto claro para botones */
+  --color-text-hover: #8E44AD;     /* Hover violeta más intenso */
+
+  --color-border: #9B59B6;         /* Borde y acentos */
+  
+  --color-bg-accept: rgba(39, 174, 96, 0.2); /* Verde hoja suave */
+  --color-bg-refused: rgba(155, 89, 182, 0.3); 
+  --color-borde-refused: #8E44AD; 
+  --color-outline: rgba(0, 0, 0, 0.08);
+
+  /* Tipografía */
+  --font-main: 'Lora', serif;
+  --font-title: 'Great Vibes', cursive;
+
+  /* Tamaños y espaciado */
+  --font-size-navbar: clamp(12px, 20px, 25px);
+  --font-size-body: clamp(10px, 12px, 14px);
+  --font-size-body-lg: clamp(1.2rem, 2rem, 2.2rem);
+  --font-size-body-sh: clamp(0.5rem, 0.9rem, 1rem);
+  --font-size-footer: clamp(12px, 16px, 20px);
+  --font-size-card: clamp(0.8rem, 2vw, 1rem);
+  --icon-size: 20px;
+
+  --box-shadow-navbar: 0 4px 8px rgba(155, 89, 182, 0.2);
+  --shadow-card: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
-.read-the-docs {
-  color: #888;
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-bg-main);
+  color: var(--color-text-secondary);
+  text-align: center;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* OPCIONAL: títulos hermosos con Great Vibes */
+h1, h2, .fancy-title {
+  font-family: var(--font-title);
+  color: var(--color-text-primary);
+  font-size: 3rem;
+  letter-spacing: 1px;
+  animation: fadeIn 0.8s ease forwards;
 }
