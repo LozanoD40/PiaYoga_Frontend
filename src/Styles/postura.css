@@ -1,12 +1,16 @@
+/* -------------------------------------------------- */
+/*               CARD GENERAL - POSTURA               */
+/* -------------------------------------------------- */
+
 .postura-card {
   background: var(--color-bg-secondary);
-  border-radius: 18px;
+  border-radius: 22px;
   box-shadow: var(--shadow-card);
-  padding: 16px;
+  padding: 22px;
   margin: 18px 5%;
-  transition: all 0.3s ease;
-  cursor: pointer;
   border: 2px solid transparent;
+  transition: 0.3s ease;
+  cursor: pointer;
 }
 
 .postura-card:hover {
@@ -14,11 +18,15 @@
   box-shadow: 0 6px 20px rgba(155, 89, 182, 0.25);
 }
 
-/* ESTADO RESUMEN                */
+/* -------------------------------------------------- */
+/*                    RESUMEN                         */
+/* -------------------------------------------------- */
+
 .card-resumen {
   display: flex;
   align-items: center;
   gap: 16px;
+  padding: 6px 0;
   animation: fadeIn 0.35s ease;
 }
 
@@ -52,7 +60,10 @@
   color: var(--color-text-secondary);
 }
 
-/* BOTÓN EXPANDIR                */
+/* -------------------------------------------------- */
+/*                    BOTÓN EXPANDIR                  */
+/* -------------------------------------------------- */
+
 .expand-button {
   background: none;
   border: none;
@@ -70,8 +81,12 @@
   transform: scale(1.15);
 }
 
-/* ESTADO DETALLE                */
+/* -------------------------------------------------- */
+/*                   DETALLE COMPLETO                 */
+/* -------------------------------------------------- */
+
 .card-detalle {
+  padding: 10px 4px;
   animation: expandContent 0.35s ease;
 }
 
@@ -81,6 +96,12 @@
   align-items: center;
 }
 
+.detalle-title {
+  margin-top: 14px;
+  font-size: 2rem;
+  color: var(--color-text-primary);
+}
+
 .card-long-desc {
   font-size: 0.95rem;
   color: var(--color-text-secondary);
@@ -88,7 +109,10 @@
   line-height: 1.45;
 }
 
-/* VIDEO                         */
+/* -------------------------------------------------- */
+/*                        VIDEO                       */
+/* -------------------------------------------------- */
+
 .card-video-container {
   width: 100%;
   margin-top: 14px;
@@ -97,14 +121,146 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.16);
 }
 
-/* Para videos responsivos tipo YouTube */
 .card-video-container iframe {
   width: 100%;
   height: 240px;
   border: none;
 }
 
-/* RESPONSIVE                    */
+/* -------------------------------------------------- */
+/*                        STATS                       */
+/* -------------------------------------------------- */
+
+.stats-row {
+  display: flex;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: #4A235A;
+  margin-top: 6px;
+}
+
+.detalle-stats {
+  justify-content: center;
+  font-weight: 600;
+}
+
+/* -------------------------------------------------- */
+/*                   BODY MAP / SVG                   */
+/* -------------------------------------------------- */
+
+.body-title {
+  font-size: 1.1rem;
+  margin-top: 16px;
+  color: var(--color-text-primary);
+  font-weight: 600;
+}
+
+.body-svg-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.body-svg {
+  width: 150px;
+  opacity: 0.9;
+}
+
+/* Zonas del cuerpo */
+.zona rect {
+  fill: #d2b4de;
+  transition: 0.25s ease;
+  opacity: 0.4;
+}
+
+/* Activo según categoría */
+.zona.active rect {
+  fill: var(--color-bg-accent);
+  opacity: 1;
+}
+
+/* Título de sección */
+.body-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+/* Contenedor principal del mapa */
+.body-map-container {
+  position: relative;
+  width: 260px;          /* Ajustable */
+  margin: 20px auto;
+}
+
+/* Imagen base del cuerpo */
+.body-base {
+  width: 100%;
+  display: block;
+  opacity: 0.9;
+}
+
+/* Capa de zona marcada */
+.zona-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0.85;
+  pointer-events: none;  /* para evitar clics sobre las capas */
+  transition: opacity 0.3s ease;
+}
+
+/* Cuando una zona está activa */
+.zona-img.active {
+  opacity: 1;
+  filter: drop-shadow(0 0 6px rgba(255, 0, 0, 0.6));
+}
+
+/* Efecto hover opcional */
+.body-map-container:hover .zona-img {
+  opacity: 1;
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .body-map-container {
+    width: 200px;
+  }
+}
+
+/* -------------------------------------------------- */
+/*                      ANIMACIONES                   */
+/* -------------------------------------------------- */
+
+@keyframes expandContent {
+  from {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -------------------------------------------------- */
+/*                    RESPONSIVE                      */
+/* -------------------------------------------------- */
+
 @media (max-width: 600px) {
   .card-resumen {
     flex-direction: column;
@@ -118,17 +274,5 @@
 
   .card-title {
     font-size: 1.8rem;
-  }
-}
-
-
-@keyframes expandContent {
-  from {
-    opacity: 0;
-    transform: scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
   }
 }

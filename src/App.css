@@ -49,9 +49,9 @@
   --color-text-primary: #4A235A;   /* Títulos en violeta profundo */
   --color-text-secondary: #000000; /* Texto general */
   --color-text-tertiary: #FFFFFF;  /* Texto claro para botones */
-  --color-text-hover: #8E44AD;     /* Hover violeta más intenso */
+  --color-text-hover: #8e44ad;     /* Hover violeta más intenso */
 
-  --color-border: #9B59B6;         /* Borde y acentos */
+  --color-border: rgb(155, 89, 182);         /* Borde y acentos */
   
   --color-bg-accept: rgba(39, 174, 96, 0.2); /* Verde hoja suave */
   --color-bg-refused: rgba(155, 89, 182, 0.3); 

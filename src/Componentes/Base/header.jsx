@@ -154,13 +154,21 @@ function Headers() {
             </Link>
           </li>
           <li>
-            <Link to="/" className="btn-header" onClick={() => setOpen(false)}>
+            <Link
+              to="/Rutina"
+              className="btn-header"
+              onClick={() => setOpen(false)}
+            >
               <img src={rutina} alt={rutina} className="img-Icon" />
               <span className="nav-text">Rutinas</span>
             </Link>
           </li>
           <li>
-            <Link to="/" className="btn-header" onClick={() => setOpen(false)}>
+            <Link
+              to="/Recompensa"
+              className="btn-header"
+              onClick={() => setOpen(false)}
+            >
               <img src={recompensa} alt={recompensa} className="img-Icon" />
               <span className="nav-text">Recompensa</span>
             </Link>

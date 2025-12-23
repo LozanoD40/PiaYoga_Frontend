@@ -1,21 +1,17 @@
-import { useState } from 'react';
-import '../../Styles/postura.css'; 
+import { useState } from 'react'
+import '../../Styles/postura.css'
 import VerMenos from '../../assets/Posturas/verMenos.svg'
 import VerMas from '../../assets/Posturas/verMas.svg'
+import BodyMapSVG from './svgBody'
 
 function PosturaCard({ postura }) {
   const [isExpanded, setIsExpanded] = useState(false)
 
-  const toggleExpand = () => {
-    setIsExpanded(!isExpanded)
-  }
+  const toggleExpand = () => setIsExpanded(!isExpanded)
 
   return (
-    <div
-      className="postura-card"
-      onClick={toggleExpand} // El contenedor completo es clickeable
-    >
-      {/* 1. ESTADO RESUMEN: Imagen y Descripción Corta */}
+    <div className="postura-card" onClick={toggleExpand}>
+      {/* RESUMEN */}
       {!isExpanded && (
         <div className="card-resumen">
           <img
@@ -23,43 +19,60 @@ function PosturaCard({ postura }) {
             alt={postura.nombre}
             className="card-image"
           />
+
           <div className="card-info">
             <h3 className="card-title">{postura.nombre}</h3>
-            <small className="card-category">
-              Dificultad: {postura.dificultad}/5 | Tiempo:{' '}
-              {postura.tiempoMinutos} min
-            </small>
+
+            <div className="stats-row">
+              <span>Dificultad: {postura.dificultad}/5</span>
+              <span>⏱ {postura.tiempoMinutos} min</span>
+              <span>🔥 {postura.energiaGastada || 25} kcal</span>
+            </div>
 
             <p className="card-short-desc">{postura.descripcionCorta}</p>
           </div>
-          <button className="expand-button" aria-expanded={isExpanded}>
-            <img src={VerMas} alt={VerMas} />
+
+          <button className="expand-button">
+            <img src={VerMas} alt="Ver más" />
           </button>
         </div>
       )}
 
-      {/* 2. ESTADO DETALLE: Video y Descripción Larga */}
+      {/* DETALLE */}
       {isExpanded && (
         <div className="card-detalle">
+          {/* VIDEO */}
           {postura.video && (
             <div className="card-video-container">
               <iframe
                 src={postura.video}
                 title={postura.nombre}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-              />
+              ></iframe>
             </div>
           )}
-          <div className="detalle-header">
-            <h3 className="card-title">{postura.nombre}</h3>
+
+          {/* TÍTULO */}
+          <h3 className="card-title detalle-title">{postura.nombre}</h3>
+
+          <div className="stats-row detalle-stats">
+            <span>Categoria: {postura.categoria}</span>
+            <span>Dificultad: {postura.dificultad}/5</span>
+            <span>Duración: {postura.tiempoMinutos} min</span>
           </div>
-          <small className="card-category">
-            Categoría: {postura.categoria}
-          </small>
+
+          {/* ZONAS DEL CUERPO */}
+          <div className="body-title">Zonas del cuerpo trabajadas</div>
+
+          <div className="body-map-container">
+            <BodyMapSVG zonas={postura.categoria} />
+          </div>
+
+          {/* DESCRIPCIÓN LARGA */}
           <p className="card-long-desc">{postura.descripcionLarga}</p>
-          <button className="expand-button" aria-expanded={isExpanded}>
-            <img src={VerMenos} alt={VerMenos} />
+
+          <button className="expand-button">
+            <img src={VerMenos} alt="Ver menos" />
           </button>
         </div>
       )}

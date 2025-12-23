@@ -22,10 +22,11 @@
 }
 
 #Logo { 
-  color: var(--color-text-primary);
+  color: var(--color-text-tertiary);
   cursor: pointer;
   text-decoration: none;
   transition: all 0.4s ease;
+  
 }
 
 #Logo:hover {
