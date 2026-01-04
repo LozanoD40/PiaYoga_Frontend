@@ -30,17 +30,38 @@ function PosturaCard({ postura }) {
             </div>
 
             <p className="card-short-desc">{postura.descripcionCorta}</p>
-          </div>
 
-          <button className="expand-button">
-            <img src={VerMas} alt="Ver más" />
-          </button>
+            <button className="expand-button">
+              <img src={VerMas} alt="Ver más" />
+            </button>
+          </div>
         </div>
       )}
 
       {/* DETALLE */}
       {isExpanded && (
         <div className="card-detalle">
+          <div className="card-detalle-info">
+            <h3 className="card-title detalle-title">{postura.nombre}</h3>
+
+            <div className="stats-row detalle-stats">
+              <span>Dificultad: {postura.dificultad}/5</span>
+              <span>⏱ {postura.tiempoMinutos} min</span>
+              <span>🔥 {postura.energiaGastada || 25} kcal</span>
+            </div>
+
+            <p className="card-long-desc">{postura.descripcionLarga}</p>
+
+            <div className="body-title">Zonas del cuerpo trabajadas</div>
+
+            <div className="body-map-container">
+              <BodyMapSVG zonas={postura.categoria} />
+            </div>
+
+            <button className="expand-button">
+              <img src={VerMenos} alt="Ver menos" />
+            </button>
+          </div>
           {/* VIDEO */}
           {postura.video && (
             <div className="card-video-container">
@@ -51,29 +72,6 @@ function PosturaCard({ postura }) {
               ></iframe>
             </div>
           )}
-
-          {/* TÍTULO */}
-          <h3 className="card-title detalle-title">{postura.nombre}</h3>
-
-          <div className="stats-row detalle-stats">
-            <span>Categoria: {postura.categoria}</span>
-            <span>Dificultad: {postura.dificultad}/5</span>
-            <span>Duración: {postura.tiempoMinutos} min</span>
-          </div>
-
-          {/* ZONAS DEL CUERPO */}
-          <div className="body-title">Zonas del cuerpo trabajadas</div>
-
-          <div className="body-map-container">
-            <BodyMapSVG zonas={postura.categoria} />
-          </div>
-
-          {/* DESCRIPCIÓN LARGA */}
-          <p className="card-long-desc">{postura.descripcionLarga}</p>
-
-          <button className="expand-button">
-            <img src={VerMenos} alt="Ver menos" />
-          </button>
         </div>
       )}
     </div>

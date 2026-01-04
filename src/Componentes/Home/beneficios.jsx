@@ -1,36 +1,53 @@
+import fisico from '../../assets/home/fisico.png'
+import mental from '../../assets/home/mental.png'
+import emocional from '../../assets/home/emocional.png'
+
 export default function Beneficios() {
   return (
-    <section className="que-es-yoga">
-      <h2 className="section-title">¿Qué es el Yoga?</h2>
-      <p className="section-description">
-        El yoga es una práctica que combina movimiento, respiración y
-        consciencia plena. Su objetivo es crear armonía entre cuerpo, mente y
-        emociones, permitiéndote vivir con claridad y equilibrio.
-      </p>
+    <section className="beneficios">
+      <h2 className="section-title">Beneficios</h2>
 
-      <div className="beneficios-container">
+      <div className="beneficios-grid">
         <div className="beneficio-card">
-          <h3>Beneficios Físicos</h3>
-          <p>
-            Mejora la flexibilidad, fortalece los músculos, aumenta la energía y
-            ayuda a corregir la postura.
-          </p>
+          <div className="beneficio-front">
+            <h3>Físicos</h3>
+            <img src={fisico} alt="" aria-hidden="true" />
+          </div>
+
+          <div className="beneficio-back">
+            <p>
+              Mejora la flexibilidad, fortalece los músculos, aumenta la energía
+              y ayuda a corregir la postura de forma consciente y progresiva.
+            </p>
+          </div>
         </div>
 
         <div className="beneficio-card">
-          <h3>Beneficios Mentales</h3>
-          <p>
-            Reduce el estrés, mejora la concentración, calma la mente y promueve
-            claridad mental.
-          </p>
+          <div className="beneficio-front">
+            <h3>Mentales</h3>
+            <img src={mental} alt="" aria-hidden="true" />
+          </div>
+
+          <div className="beneficio-back">
+            <p>
+              Reduce el estrés, mejora la concentración y te ayuda a mantener
+              una mente clara y enfocada en el presente.
+            </p>
+          </div>
         </div>
 
         <div className="beneficio-card">
-          <h3>Beneficios Emocionales</h3>
-          <p>
-            Ayuda a gestionar emociones, aumenta la estabilidad interna y
-            fomenta una sensación de paz interior.
-          </p>
+          <div className="beneficio-front">
+            <h3>Emocionales</h3>
+            <img src={emocional} alt="" aria-hidden="true" />
+          </div>
+
+          <div className="beneficio-back">
+            <p>
+              Favorece la gestión emocional, fortalece la estabilidad interna y
+              fomenta una sensación de paz y bienestar.
+            </p>
+          </div>
         </div>
       </div>
     </section>

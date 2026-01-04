@@ -1,8 +1,37 @@
 import { useEffect, useState } from 'react'
-import card from '../../assets/home/card.jpeg'
+
 export default function Consejos() {
+  const [todos, setTodos] = useState([])
   const [consejos, setConsejos] = useState([])
   const API = import.meta.env.VITE_API_URL + '/consejos'
+
+  // Obtiene un consejo fijo por categoría (para el primer render)
+  const obtenerUnoPorCategoria = (lista) => {
+    const resultado = {}
+    lista.forEach((c) => {
+      if (!resultado[c.categoria]) {
+        resultado[c.categoria] = c
+      }
+    })
+    return Object.values(resultado)
+  }
+
+  // Obtiene uno aleatorio por categoría (puede repetirse)
+  const obtenerAleatorioPorCategoria = (lista) => {
+    const grupos = {}
+
+    lista.forEach((c) => {
+      if (!grupos[c.categoria]) {
+        grupos[c.categoria] = []
+      }
+      grupos[c.categoria].push(c)
+    })
+
+    return Object.values(grupos).map((grupo) => {
+      const randomIndex = Math.floor(Math.random() * grupo.length)
+      return grupo[randomIndex]
+    })
+  }
 
   useEffect(() => {
     const obtenerConsejos = async () => {
@@ -10,13 +39,11 @@ export default function Consejos() {
         const res = await fetch(API)
         const json = await res.json()
 
-        // json.data ES EL ARRAY CORRECTO
-        const lista = json.data || []
-
-        // Solo activos
+        const lista = json.data ?? []
         const activos = lista.filter((c) => c.activo === true)
 
-        setConsejos(activos)
+        setTodos(activos)
+        setConsejos(obtenerUnoPorCategoria(activos))
       } catch (error) {
         console.error('Error al cargar consejos:', error)
       }
@@ -25,21 +52,24 @@ export default function Consejos() {
     obtenerConsejos()
   }, [API])
 
+  const cambiarConsejos = () => {
+    if (todos.length === 0) return
+    setConsejos(obtenerAleatorioPorCategoria(todos))
+  }
+
   return (
-    <div>
-      <h2>Consejos</h2>
+    <section className="consejos-section">
+      <h2 className="consejos-title">Consejos para tu práctica</h2>
 
       {consejos.length === 0 ? (
         <p>No hay consejos activos.</p>
       ) : (
         <div className="carta-box">
           {consejos.map((c) => (
-            <div key={c._id} className="carta">
-              <div className="cara">
-                <img src={c.imagen} alt="yoga" />
-              </div>
-              <div className="cara detras">
-                <img src={card} alt="yoga" />
+            <div key={c._id} className={`carta carta-${c.categoria}`}>
+              <img src={c.imagen} alt={c.categoria} />
+
+              <div className="content">
                 <p>{c.texto}</p>
                 <small>{c.categoria}</small>
               </div>
@@ -47,6 +77,14 @@ export default function Consejos() {
           ))}
         </div>
       )}
-    </div>
+
+      <button
+        className="consejos-btn"
+        onClick={cambiarConsejos}
+        disabled={todos.length < 6}
+      >
+        Ver otros consejos
+      </button>
+    </section>
   )
 }

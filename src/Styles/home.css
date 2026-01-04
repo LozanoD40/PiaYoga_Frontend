@@ -1,88 +1,310 @@
-/*------------------Home----------------*/
+/*=============HOME==================*/
 .home-inicio {
   width: 100%;
-  padding: 4rem 1.5rem;
-  background: var(--color-bg-secondary);
+  padding: 1.5rem;
   animation: fadeIn 1s ease forwards;
 }
 
 .inicio-content {
-  max-width: 850px;
+  background-color: var(--color-bg-secondary);
+  border-radius: 32px;
+  width: min(1800px, 95vw);
+  height: auto;
   margin: 0 auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.inicio-content h1 {
+.title {
   font-family: var(--font-title);
-  font-size: 3.5rem;
-  color: var(--color-text-primary);
-  margin-bottom: 1rem;
+  font-size: clamp(2.2rem, 4vw, 3rem);
+  margin-bottom: 0.5rem;
 }
 
 .inicio-subtitle {
   font-family: var(--font-main);
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: var(--color-text-secondary);
-  line-height: 1.6;
-  animation: fadeInScale 0.8s ease forwards;
+  line-height: 1.7;
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
-/* ============================
-   SECCIÓN — ¿QUÉ ES EL YOGA?
-=============================== */
-.que-es-yoga {
-  padding: 4rem 1.5rem;
-  background: var(--color-bg-main);
+/* CARD */
+.content-card {
+  width: 100%;
+}
+
+.card-home {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  margin: 1rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  overflow: hidden;
+  transition: all 0.35s ease;
+  cursor: pointer;
+}
+
+.card-img {
+  position: relative;
+  z-index: 3;
+  background-color: var(--color-bg-accent);
+  width: 190px;
+  min-height: 100%;
+  border-top-left-radius: 999px;
+  border-bottom-left-radius: 999px;
+
+  clip-path: polygon(0 0, 75% 0, 100% 100%, 0 100%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-icon {
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: var(--color-bg-secondary);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+  transition: transform 0.35s ease;
+}
+
+/* TEXTO */
+
+.card-text {
+  position: relative;
+  z-index: 1;
+  margin-left: -90px;
+  padding: 1rem 4rem 1rem 5.5rem;
+  border: 2px solid var(--color-border);
+  border-radius: 999px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.card-label {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.card-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-secondary);
+  opacity: 0.75;
+}
+
+.card-home span {
+  display: block;
+  line-height: 1.3;
+}
+
+/* HOVER */
+.card-home:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+.card-home:hover .card-icon {
+  transform: scale(1.15) rotate(-10deg);
+}
+
+.card-home::after {
+  content: 'Explorar →';
+  position: absolute;
+  right: 28px;
+  bottom: 18px;
+  font-size: 0.75rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card-home:hover::after {
+  opacity: 0.75;
+}
+
+/*RESPONSIVE*/
+@media (max-width: 768px) {
+  .home-inicio {
+    padding: 0.5rem;
+  }
+
+  .inicio-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .inicio-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .card-home {
+    margin: 0.75rem 0;
+  }
+
+  .card-img {
+    width: 120px;
+  }
+
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+  }
+
+  .card-text {
+    margin-left: -60px;
+    padding: 0.9rem 3rem 0.9rem 4.2rem;
+  }
+
+  .card-label {
+    font-size: 1rem;
+  }
+
+  .card-desc {
+    font-size: 0.8rem;
+  }
+
+  .card-home::after {
+    right: 20px;
+    bottom: 14px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-img {
+    width: 95px;
+  }
+
+  .card-icon {
+    width: 34px;
+    height: 34px;
+    padding: 6px;
+  }
+
+  .card-text {
+    margin-left: -45px;
+    padding: 0.75rem 2.5rem 0.75rem 3.6rem;
+  }
+
+  .card-label {
+    font-size: 0.95rem;
+  }
+
+  .card-desc {
+    font-size: 0.75rem;
+  }
+
+  .card-home::after {
+    display: none;
+  }
+}
+
+/*==============BENEFICIO============= */
+.beneficios {
+  width: min(1800px, 95vw);
+  margin: 1rem auto;
+  text-align: center;
 }
 
 .section-title {
   font-family: var(--font-title);
-  font-size: 3rem;
-  color: var(--color-text-primary);
-  margin-bottom: 1rem;
-  animation: fadeIn 0.7s ease forwards;
+  font-size: min(1.5rem, 3rem);
+  margin-bottom: 2.5rem;
 }
 
-.section-description {
-  max-width: 900px;
-  margin: 0 auto;
-  font-size: 1.1rem;
-  color: var(--color-text-secondary);
-  line-height: 1.7;
-  margin-bottom: 3rem;
-}
-
-.beneficios-container {
+.beneficios-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 1.5rem;
-  padding: 1rem 0;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
 }
 
 .beneficio-card {
+  position: relative;
+  height: 320px;
+  border-radius: 24px;
+  overflow: hidden;
   background: var(--color-bg-secondary);
-  padding: 1.7rem;
-  border-radius: 18px;
-  box-shadow: var(--shadow-card);
-  text-align: left;
-  animation: fadeInScale 0.6s ease forwards;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+  transition: transform 0.4s ease;
 }
 
-.beneficio-card h3 {
-  font-family: var(--font-main);
-  font-size: 1.3rem;
-  margin-bottom: 0.8rem;
-  color: var(--color-text-primary);
+.beneficio-card:hover {
+  transform: translateY(-8px);
 }
 
-.beneficio-card p {
-  font-size: 0.95rem;
+.beneficio-front {
+  height: 100%;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 2;
+}
+
+.beneficio-front img {
+  width: 100%;
+  height: 100%;
+}
+
+.beneficio-front h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.beneficio-front p {
+  font-size: 0.9rem;
   color: var(--color-text-secondary);
-  line-height: 1.5;
 }
 
-/* ============================
-   SECCIÓN — TESTIMONIOS
-=============================== */
+.beneficio-back {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.75));
+
+  color: #fff;
+  padding: 2rem 1.5rem;
+
+  display: flex;
+  align-items: flex-end;
+
+  transform: translateY(100%);
+  transition: transform 0.45s ease;
+}
+
+.beneficio-card:hover .beneficio-back {
+  transform: translateY(0);
+}
+
+.beneficio-back p {
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .beneficio-card {
+    height: 280px;
+  }
+
+  .beneficio-back {
+    transform: translateY(0);
+    background: rgba(0, 0, 0, 0.65);
+  }
+}
+
+/* ==========TESTIMONIOS============== */
 .testimonios {
   padding: 4rem 1.5rem;
   background: var(--color-bg-secondary);
@@ -119,34 +341,177 @@
   font-weight: bold;
   font-family: var(--font-main);
 }
-/*------------------Consejos----------------*/
 
-.carta-box {
-  margin: 100px;
-  width: 200px;
-  height: 250px;
-  position: relative;
-  perspective: 1000px;
+/*===================Consejos===================*/
+
+.consejos-section {
+  width: min(1800px, 95vw);
+  margin: 0 auto;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
 }
 
-.carta-box:hover .carta {
-  transform: rotateY(180deg);
+.consejos-title {
+  font-size: min(1.5rem, 3rem);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-align: center;
+}
+
+/* CARTA */
+
+.carta-box {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
 }
 
 .carta {
-  transform-style: preserve-3d;
-  transition: all 0.5s linear;
+  position: relative;
+  width: 260px;
+  height: 340px;
+  border-radius: 24px;
+  overflow: hidden;
+  background-color: var(--color-bg-main);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.cara {
-  width: 200px;
-  height: 250px;
+.carta:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+/* IMAGEN */
+
+.carta img {
   position: absolute;
-  backface-visibility: hidden;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+  transform: scale(1.15);
 }
 
-.cara.detras {
-  width: 200px;
-  height: 250px;
-  transform: rotateY(180deg);
+/*INFORMACION*/
+
+.carta .content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  padding: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 20px;
+  backdrop-filter: blur(2px);
+}
+
+/*TEXTO*/
+
+.carta .content p {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  animation: consejoEnter 0.8s ease-out;
+}
+
+.carta .content small {
+  align-self: flex-start;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+/*BOTÓN*/
+
+.consejos-btn {
+  margin-top: 2rem;
+  padding: 0.75rem 2.2rem;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background-color: transparent;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.consejos-btn:hover {
+  background-color: var(--color-bg-accent);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.consejos-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.consejos-btn:active {
+  transform: scale(0.96);
+}
+
+/* COLORES POR CATEGORÍA*/
+
+.carta-motivacion {
+  border: 2px solid #e67e22;
+}
+
+.carta-postura {
+  border: 2px solid #27ae60;
+}
+
+.carta-salud {
+  border: 2px solid #c0392b;
+}
+
+.carta-respiracion {
+  border: 2px solid #2980b9;
+}
+
+.carta-general {
+  border: 2px solid #8e44ad;
+}
+
+/* Color de etiqueta por categoría */
+
+.carta-motivacion small {
+  color: #e67e22;
+}
+
+.carta-postura small {
+  color: #27ae60;
+}
+
+.carta-salud small {
+  color: #c0392b;
+}
+
+.carta-respiracion small {
+  color: #2980b9;
+}
+
+.carta-general small {
+  color: #8e44ad;
+}
+
+@keyframes consejoEnter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

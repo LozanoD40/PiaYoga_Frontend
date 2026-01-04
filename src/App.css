@@ -89,7 +89,8 @@ body {
 h1, h2, .fancy-title {
   font-family: var(--font-title);
   color: var(--color-text-primary);
-  font-size: 3rem;
+  margin-top: 0.5rem;
+  font-size: min(1.5rem, 3rem);
   letter-spacing: 1px;
   animation: fadeIn 0.8s ease forwards;
 }
