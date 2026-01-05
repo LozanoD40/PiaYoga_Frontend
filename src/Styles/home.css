@@ -551,7 +551,7 @@
 /* FLECHA */
 .testimonio-arrow {
   position: absolute;
-  bottom: -20px;
+  bottom: -18px;
   left: 20%;
   transform: translateX(-50%);
   width: 0;

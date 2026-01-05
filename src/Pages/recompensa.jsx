@@ -90,6 +90,26 @@ export default function Accesorios() {
           ))}
         </div>
       )}
+
+      <div>
+        <div className="postura-wrapper">
+          <img
+            src="/posturas/arbol.png"
+            className="postura-base"
+            alt="Postura Árbol"
+          />
+
+          {/* Skin: cabeza */}
+          <img
+            src="/skins/perro-head.png"
+            className="skin-head"
+            alt="Skin perro"
+          />
+
+          {/* Aura opcional */}
+          <div className="aura aura-verde" />
+        </div>
+      </div>
     </div>
   )
 }

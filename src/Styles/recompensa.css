@@ -98,3 +98,38 @@
   border-radius: 8px;
 }
 
+
+.postura-wrapper {
+  position: relative;
+  width: 300px;
+  aspect-ratio: 3 / 5;
+}
+
+.postura-base {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ANCLAJE DE CABEZA */
+.skin-head {
+  position: absolute;
+  top: 6%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 25%;
+  pointer-events: none;
+}
+
+/* AURA */
+.aura {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  filter: blur(30px);
+  opacity: 0.4;
+}
+
+.aura-verde {
+  background: radial-gradient(circle, #8fd694, transparent 70%);
+}

@@ -1,0 +1,236 @@
+/* ===== CONTENEDOR GENERAL ===== */
+.rutina-page {
+  width: min(1800px, 95vw);
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+
+/* ===== TITULOS ===== */
+.rutina-title {
+  font-size: min(1.5rem, 3rem);
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.rutina-subtitle {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+/* ===== SELECT ===== */
+.rutina-select {
+  display: flex;
+  justify-content: left;
+  padding: 12px 16px;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  min-width: 260px;
+  cursor: pointer;
+  transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rutina-select:focus {
+  outline: none;
+  border-color: var(--color-border);
+  box-shadow: var(--shadow-card);
+}
+
+/* ===== LISTA DE RUTINAS ===== */
+.rutina-list {
+  margin-top: 32px;
+}
+
+.rutina-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.rutina-empty {
+  color: #777;
+  font-style: italic;
+}
+
+/* ===== ITEM ===== */
+.rutina-item {
+  display: flex;
+  padding: 16px 20px;
+  border-radius: 14px;
+  background: var(--color-bg-secondary);
+  border: 1px solid #e5e5e5;
+  cursor: pointer;
+  justify-content: space-between;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.rutina-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+
+.rutina-item-header {
+  display: flex;
+  align-items: center;
+}
+
+.rutina-action {
+  font-size: 0.9rem;
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+/* ===== DETALLES ===== */
+.rutina-detail {
+  margin-top: 48px;
+  padding: 28px;
+  border-radius: 18px;
+  background: #f9fafb;
+  border: 1px solid #e0e0e0;
+}
+
+.rutina-detail h2 {
+  margin-bottom: 16px;
+}
+
+.rutina-metadata {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.rutina-metadata p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/*======= MUSICA ===========*/
+.rutina-music-selector {
+  margin: 20px 0;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--color-bg-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+
+.rutina-music-selector select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+}
+
+.rutina-music-selector button {
+  padding: 0.75rem 2.2rem;
+  margin: 1rem 0;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background-color: rgb(155, 89, 182, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.rutina-music-selector button:hover {
+  background-color: var(--color-bg-accent);
+  color: #ffffff;
+  transform: scale(0.95);
+}
+
+/* ================== MODAL OVERLAY ================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(74, 35, 90, 0.55); /* violeta oscuro translúcido */
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================== MODAL CONTENIDO ================== */
+.modal-content {
+  width: min(800px, 90vw);
+  max-height: 90vh;
+  overflow-y: auto;
+
+  border-radius: 20px;
+  padding: 32px;
+  position: relative;
+
+  box-shadow: var(--shadow-card);
+  animation: modalFadeIn 0.25s ease-out;
+}
+
+/* ================== BOTÓN CERRAR ================== */
+.modal-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  color: var(--color-text-primary);
+  cursor: pointer;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.modal-close:hover {
+  transform: scale(1.15);
+  color: var(--color-text-hover);
+}
+
+/* ================== AJUSTES DEL DETALLE EN MODAL ================== */
+.modal-content.rutina-detail {
+  margin-top: 0; /* elimina comportamiento de layout normal */
+  border: 1px solid var(--color-border);
+  scrollbar-color: var(--color-bg-accent) #dbdbdbcc;
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+}
+
+/* ================== ANIMACIÓN ================== */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.rutina-play-btn {
+  padding: 1rem 2.5rem;
+  border-radius: 999px;
+  border: none;
+  background: var(--color-bg-accent);
+  color: var(--color-text-tertiary);
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rutina-play-btn:hover {
+  transform: scale(0.96);
+  box-shadow: var(--shadow-card);
+}
+
+.contador {
+  margin-top: 16px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  text-align: center;
+}
