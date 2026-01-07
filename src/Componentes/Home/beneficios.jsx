@@ -12,6 +12,7 @@ export default function Beneficios() {
           <div className="beneficio-front">
             <h3>Físicos</h3>
             <img src={fisico} alt="" aria-hidden="true" />
+            <span></span>
           </div>
 
           <div className="beneficio-back">
@@ -26,6 +27,7 @@ export default function Beneficios() {
           <div className="beneficio-front">
             <h3>Mentales</h3>
             <img src={mental} alt="" aria-hidden="true" />
+            <span></span>
           </div>
 
           <div className="beneficio-back">
@@ -40,6 +42,7 @@ export default function Beneficios() {
           <div className="beneficio-front">
             <h3>Emocionales</h3>
             <img src={emocional} alt="" aria-hidden="true" />
+            <span></span>
           </div>
 
           <div className="beneficio-back">
