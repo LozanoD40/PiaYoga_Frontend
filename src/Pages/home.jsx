@@ -5,7 +5,7 @@ import Consejos from '../Componentes/Home/consejos'
 import Testimonio from '../Componentes/Home/testimonio'
 export default function Home() {
   return (
-    <div>
+    <div className='landing'>
       <Inicio />
       <Beneficio />
       <Consejos />

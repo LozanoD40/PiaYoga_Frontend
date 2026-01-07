@@ -31,7 +31,27 @@ export default function Consejos() {
       const randomIndex = Math.floor(Math.random() * grupo.length)
       return grupo[randomIndex]
     })
+  } 
+
+  const cambiarConsejoIndividual = (index) => {
+    setConsejos((prev) => {
+      const categoria = prev[index].categoria
+
+      // filtra todos los consejos de esa categoría
+      const opciones = todos.filter(
+        (c) => c.categoria === categoria && c._id !== prev[index]._id
+      )
+
+      if (opciones.length === 0) return prev
+
+      const nuevo = opciones[Math.floor(Math.random() * opciones.length)]
+
+      const copia = [...prev]
+      copia[index] = nuevo
+      return copia
+    })
   }
+
 
   useEffect(() => {
     const obtenerConsejos = async () => {
@@ -64,17 +84,23 @@ export default function Consejos() {
       {consejos.length === 0 ? (
         <p>No hay consejos activos.</p>
       ) : (
-        <div className="carta-box">
-          {consejos.map((c) => (
-            <div key={c._id} className={`carta carta-${c.categoria}`}>
-              <img src={c.imagen} alt={c.categoria} />
+        <div className="consejo-card" tabIndex="0">
+          <div className="carta-box">
+            {consejos.map((c, index) => (
+              <div
+                key={c._id}
+                className={`carta carta-${c.categoria}`}
+                onClick={() => cambiarConsejoIndividual(index)}
+              >
+                <img src={c.imagen} alt={c.categoria} />
 
-              <div className="content">
-                <p>{c.texto}</p>
-                <small>{c.categoria}</small>
+                <div className="content">
+                  <p>{c.texto}</p>
+                  <small>{c.categoria}</small>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       )}
 
