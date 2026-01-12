@@ -3,7 +3,7 @@
   inset: 0;
   background-color: rgba(0, 0, 0, 0.75);
   display: flex;
-  align-items: center;
+  align-items: start;
   justify-content: center;
   z-index: 1000;
   backdrop-filter: blur(6px);
@@ -12,6 +12,7 @@
 .modal-content {
   background: var(--color-bg-secondary);
   padding: 2rem;
+  margin-top: 25vh;
   border-radius: 10px;
   border: 2px solid var(--color-border);
   width: 90%;

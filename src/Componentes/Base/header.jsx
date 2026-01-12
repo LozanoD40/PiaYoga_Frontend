@@ -7,7 +7,6 @@ import home from '../../assets/Ambientacion/home.svg'
 import horario from '../../assets/Ambientacion/horario.svg'
 import postura from '../../assets/Ambientacion/postura.svg'
 import rutina from '../../assets/Ambientacion/rutina.svg'
-import recompensa from '../../assets/Ambientacion/recompensa.svg'
 import florYoga from '../../assets/Ambientacion/flor_yoga_icon.png'
 import Login from './login'
 
@@ -164,16 +163,6 @@ function Headers() {
             </Link>
           </li>
           <li>
-            <Link
-              to="/Recompensa"
-              className="btn-header"
-              onClick={() => setOpen(false)}
-            >
-              <img src={recompensa} alt={recompensa} className="img-Icon" />
-              <span className="nav-text">Recompensa</span>
-            </Link>
-          </li>
-          <li>
             {!user ? (
               <button
                 className="btn-header"
@@ -184,10 +173,17 @@ function Headers() {
                 <span className="nav-text">Incia sesion</span>
               </button>
             ) : (
-              <button className="btn-header" onClick={cerrarSesion} id="login">
-                <img src={usuario} alt="cerrar sesion" className="img-Icon" />
-                <span className="nav-text">Cierra sesion</span>
-              </button>
+              <details  className="select-perfil">
+                <button className="btn-header">Perfil</button>
+                <button
+                  className="btn-header"
+                  onClick={cerrarSesion}
+                  id="login"
+                >
+                  <img src={usuario} alt="cerrar sesion" className="img-Icon" />
+                  <span className="nav-text">Cierra sesion</span>
+                </button>
+              </details>
             )}
           </li>
         </ul>

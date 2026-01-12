@@ -145,10 +145,10 @@
 }
 
 /* ================== MODAL OVERLAY ================== */
-.modal-overlay {
+.modal-overlay-rutina {
   position: fixed;
   inset: 0;
-  background: rgba(74, 35, 90, 0.55); /* violeta oscuro translúcido */
+  background: rgba(74, 35, 90, 0.3); 
   z-index: 1000;
 
   display: flex;
@@ -157,7 +157,7 @@
 }
 
 /* ================== MODAL CONTENIDO ================== */
-.modal-content {
+.modal-content-rutina {
   width: min(800px, 90vw);
   max-height: 90vh;
   overflow-y: auto;
@@ -171,7 +171,7 @@
 }
 
 /* ================== BOTÓN CERRAR ================== */
-.modal-close {
+.modal-close-rutina {
   position: absolute;
   top: 14px;
   right: 16px;
@@ -184,13 +184,13 @@
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
-.modal-close:hover {
+.modal-close-rutina:hover {
   transform: scale(1.15);
   color: var(--color-text-hover);
 }
 
 /* ================== AJUSTES DEL DETALLE EN MODAL ================== */
-.modal-content.rutina-detail {
+.modal-content-rutina.rutina-detail {
   margin-top: 0; /* elimina comportamiento de layout normal */
   border: 1px solid var(--color-border);
   scrollbar-color: var(--color-bg-accent) #dbdbdbcc;

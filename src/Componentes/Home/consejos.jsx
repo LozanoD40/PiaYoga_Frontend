@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import TypewriterText from '../Home/escritura.jsx'
 
 export default function Consejos() {
   const [todos, setTodos] = useState([])
@@ -95,7 +96,9 @@ export default function Consejos() {
                 <img src={c.imagen} alt={c.categoria} />
 
                 <div className="content">
-                  <p>{c.texto}</p>
+                  <p>
+                    <TypewriterText text={c.texto} />
+                  </p>
                   <small>{c.categoria}</small>
                 </div>
               </div>

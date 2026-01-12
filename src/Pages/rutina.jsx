@@ -162,10 +162,10 @@ export default function Rutina() {
       {rutinaActiva && (
         <div className="modal-overlay" onClick={finalizarRutina}>
           <div
-            className="modal-content rutina-detail"
+            className="modal-content-rutina rutina-detail"
             onClick={(e) => e.stopPropagation()}
           >
-            <button className="modal-close" onClick={finalizarRutina}>
+            <button className="modal-close-rutina" onClick={finalizarRutina}>
               ✕
             </button>
 

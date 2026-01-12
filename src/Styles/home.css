@@ -34,105 +34,141 @@
 
 /* CARD */
 .content-card {
-  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  gap: 2rem;
 }
 
+/* CARD PRINCIPAL */
 .card-home {
   position: relative;
-  display: flex;
-  align-items: stretch;
-  margin: 1rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.7);
+  height: 200px;
+  background: var(--color-bg-main);
+  border-radius: 12px;
   text-decoration: none;
   overflow: hidden;
-  transition: all 0.35s ease;
-  cursor: pointer;
-}
-
-.card-img {
-  position: relative;
-  z-index: 3;
-  background-color: var(--color-bg-accent);
-  width: 190px;
-  min-height: 100%;
-  border-top-left-radius: 999px;
-  border-bottom-left-radius: 999px;
-
-  clip-path: polygon(0 0, 75% 0, 100% 100%, 0 100%);
-
+  transition: all 0.45s ease;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+}
+
+/* BORDE ANIMADO */
+.card-border {
+  position: absolute;
+  inset: 0;
+  border: 2px solid var(--color-border);
+  opacity: 0;
+  transform: rotate(8deg);
+  transition: all 0.8s ease;
+}
+
+/* CONTENIDO */
+.card-content {
+  z-index: 2;
+  text-align: center;
+  color: var(--color-text-primary);
+  transition: all 0.45s ease;
 }
 
 .card-icon {
-  width: 50px;
-  height: 50px;
-  padding: 10px;
-  border-radius: 50%;
-  background-color: var(--color-bg-secondary);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
-  transition: transform 0.35s ease;
+  width: 25px;
+  height: 25px;
 }
 
 /* TEXTO */
-
-.card-text {
-  position: relative;
-  z-index: 1;
-  margin-left: -90px;
-  padding: 1rem 4rem 1rem 5.5rem;
-  border: 2px solid var(--color-border);
-  border-radius: 999px;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
-
 .card-label {
-  font-size: 1.05rem;
+  display: block;
+  font-size: var(--font-size-body-sh);
+  font-family: var(--font-title);
   font-weight: 600;
-  color: var(--color-text-primary);
+  letter-spacing: 1px;
 }
 
 .card-desc {
-  font-size: 0.85rem;
-  color: var(--color-text-secondary);
+  font-size: 0.6rem;
+  margin: 0 0.9rem;
   opacity: 0.75;
 }
 
-.card-home span {
-  display: block;
-  line-height: 1.3;
-}
-
-/* HOVER */
-.card-home:hover {
-  transform: translateY(-6px) scale(1.02);
-}
-
-.card-home:hover .card-icon {
-  transform: scale(1.15) rotate(-10deg);
-}
-
-.card-home::after {
-  content: 'Explorar →';
+/* TEXTO INFERIOR */
+.card-bottom-text {
   position: absolute;
-  right: 28px;
-  bottom: 18px;
-  font-size: 0.75rem;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.5rem;
+  letter-spacing: 4px;
+  color: var(--color-border);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: all 0.45s ease;
 }
 
-.card-home:hover::after {
-  opacity: 0.75;
+/* HOVER EFFECT */
+.card-home:hover {
+  transform: translateY(-6px);
+  border-radius: 0;
+}
+
+.card-home:hover .card-border {
+  inset: 14px;
+  opacity: 1;
+  transform: rotate(0);
+}
+
+.card-home:hover .card-bottom-text {
+  opacity: 1;
+}
+
+.card-home:hover .card-content {
+  transform: translateY(-6px);
+}
+
+/* ACCESIBILIDAD */
+.card-home:focus-visible {
+  outline: 2px solid var(--color-border);
+}
+
+@keyframes please-clickme {
+  /* --- pausa inicial --- */
+  0%,
+  40% {
+    transform: translateX(0);
+  }
+
+  /* --- vibración (≈2s del total) --- */
+  45% {
+    transform: translateX(-4px);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+  55% {
+    transform: translateX(-3px);
+  }
+  60% {
+    transform: translateX(3px);
+  }
+  65% {
+    transform: translateX(-2px);
+  }
+  70% {
+    transform: translateX(2px);
+  }
+  75% {
+    transform: translateX(0);
+  }
+
+  /* --- pausa final --- */
+  100% {
+    transform: translateX(0);
+  }
 }
 
 /*RESPONSIVE*/
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .home-inicio {
     padding: 0.5rem;
   }
@@ -146,66 +182,65 @@
     margin-bottom: 1.5rem;
   }
 
-  .card-home {
-    margin: 0.75rem 0;
-  }
-
-  .card-img {
-    width: 120px;
-  }
-
-  .card-icon {
-    width: 40px;
-    height: 40px;
-    padding: 8px;
-  }
-
-  .card-text {
-    margin-left: -60px;
-    padding: 0.9rem 3rem 0.9rem 4.2rem;
-  }
-
-  .card-label {
-    font-size: 1rem;
-  }
-
   .card-desc {
-    font-size: 0.8rem;
+    font-size: 0.65rem;
+    margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Cards layout */
+  .content-card {
+    gap: 1rem;
+    animation: please-clickme 3s ease-in-out infinite;
   }
 
-  .card-home::after {
-    right: 20px;
-    bottom: 14px;
-    font-size: 0.7rem;
+  .card-home {
+    height: 180px;
   }
 }
 
 @media (max-width: 480px) {
-  .card-img {
-    width: 95px;
+  .content-card {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.2rem;
+  }
+
+  .card-home {
+    height: 160px;
+    border-radius: 10px;
+    transform: none;
+  }
+
+  /* Evitar problemas de hover en móvil */
+  .card-home:hover {
+    transform: none;
+    border-radius: 10px;
+  }
+
+  .card-border {
+    display: none;
   }
 
   .card-icon {
-    width: 34px;
-    height: 34px;
-    padding: 6px;
-  }
-
-  .card-text {
-    margin-left: -80px;
-    padding: 0.75rem 1rem 0.75rem 4.5rem;
+    width: 30px;
+    height: 30px;
   }
 
   .card-label {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
   }
 
   .card-desc {
-    font-size: 0.75rem;
+    font-size: 0.6rem;
+    margin: 0 1rem;
   }
 
-  .card-home::after {
-    display: none;
+  .card-bottom-text {
+    opacity: 1;
+    font-size: 8px;
+    bottom: 12px;
   }
 }
 
@@ -381,12 +416,10 @@
   background-color: var(--color-bg-main);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  animation: consejoEnter 0.5s ease-in-out;
 }
 
 .carta:hover {
   transform: translateY(-6px);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
 }
 
 /* IMAGEN */
@@ -396,7 +429,7 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   opacity: 0.3;
   transform: scale(1.15);
 }
@@ -418,9 +451,12 @@
 /*TEXTO*/
 
 .carta .content p {
-  font-size: 0.95rem;
+  font-size: var(--font-size-card);
   line-height: 1.6;
   color: var(--color-text-secondary);
+  overflow: hidden;
+  white-space: pre-wrap;
+  animation: blink 0.9s step-end infinite;
 }
 
 .carta .content small {
@@ -505,14 +541,9 @@
   color: #8e44ad;
 }
 
-@keyframes consejoEnter {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+@keyframes blink {
+  50% {
+    border-color: transparent;
   }
 }
 
