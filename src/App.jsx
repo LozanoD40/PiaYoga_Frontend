@@ -7,7 +7,7 @@ import Login from './Componentes/Base/login.jsx'
 import HorariosDisponibles from './Pages/horario.jsx'
 import Posturas from './Pages/posturas.jsx'
 import Rutina from './Pages/rutina.jsx'
-import Recompensa from './Pages/recompensa.jsx'
+import Perfil from './Pages/perfil.jsx'
 function App() {
   return (
     <>
@@ -17,7 +17,7 @@ function App() {
         <Route path="/Horario" element={<HorariosDisponibles />} />
         <Route path="/Posturas" element={<Posturas />} />
         <Route path="/Rutina" element={<Rutina />} />
-        <Route path="/Recompensa" element={<Recompensa />} />
+        <Route path="/Perfil" element={<Perfil />} />
         <Route path="/login" element={<Login />} />
       </Routes>
       <Footer />

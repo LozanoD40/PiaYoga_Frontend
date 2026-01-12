@@ -2,7 +2,9 @@ import './../../styles/header.css'
 import { Link } from 'react-router-dom'
 import { useState, useEffect, useRef } from 'react'
 import noUsuario from '../../assets/Ambientacion/noUsuario.svg'
+import Perfil from '../../assets/Ambientacion/perfil.svg'
 import usuario from '../../assets/Ambientacion/usuario.svg'
+import AdministrarPerfil from '../../assets/Ambientacion/administarPerfil.svg'
 import home from '../../assets/Ambientacion/home.svg'
 import horario from '../../assets/Ambientacion/horario.svg'
 import postura from '../../assets/Ambientacion/postura.svg'
@@ -173,16 +175,42 @@ function Headers() {
                 <span className="nav-text">Incia sesion</span>
               </button>
             ) : (
-              <details  className="select-perfil">
-                <button className="btn-header">Perfil</button>
-                <button
-                  className="btn-header"
-                  onClick={cerrarSesion}
-                  id="login"
-                >
-                  <img src={usuario} alt="cerrar sesion" className="img-Icon" />
-                  <span className="nav-text">Cierra sesion</span>
-                </button>
+              <details className="select-perfil">
+                <summary className="btn-header perfil-btn">
+                  <img
+                    src={AdministrarPerfil}
+                    alt="perfil"
+                    className="img-Icon"
+                  />
+                  <span className="nav-text">Perfil</span>
+                </summary>
+
+                <div className="perfil-menu">
+                  <button
+                    className="btn-header perfil-item"
+                    onClick={cerrarSesion}
+                    id="login"
+                  >
+                    <img
+                      src={usuario}
+                      alt="cerrar sesion"
+                      className="img-Icon"
+                    />
+                    <span className="nav-text">Cerrar sesión</span>
+                  </button>
+                  <Link
+                    to="/Perfil"
+                    className="btn-header"
+                    onClick={() => setOpen(false)}
+                  >
+                    <img
+                      src={Perfil}
+                      alt="visitar perfil"
+                      className="img-Icon"
+                    />
+                    <span className="nav-text">Visitar perfil</span>
+                  </Link>
+                </div>
               </details>
             )}
           </li>

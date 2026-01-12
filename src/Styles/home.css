@@ -91,6 +91,7 @@
   font-size: 0.6rem;
   margin: 0 0.9rem;
   opacity: 0.75;
+  background-color: var(--color-bg-main);
 }
 
 /* TEXTO INFERIOR */
@@ -138,29 +139,11 @@
     transform: translateX(0);
   }
 
-  /* --- vibración (≈2s del total) --- */
-  45% {
-    transform: translateX(-4px);
-  }
-  50% {
-    transform: translateX(4px);
-  }
-  55% {
-    transform: translateX(-3px);
-  }
-  60% {
-    transform: translateX(3px);
-  }
-  65% {
-    transform: translateX(-2px);
-  }
-  70% {
-    transform: translateX(2px);
-  }
-  75% {
-    transform: translateX(0);
-  }
 
+  50% { transform: scale(1.05); }
+  60% { transform: scale(0.99); }
+  70% { transform: scale(1.08); }
+  80% { transform: scale(1); }
   /* --- pausa final --- */
   100% {
     transform: translateX(0);
@@ -192,7 +175,7 @@
   /* Cards layout */
   .content-card {
     gap: 1rem;
-    animation: please-clickme 3s ease-in-out infinite;
+    animation: please-clickme 5s ease-in-out infinite;
   }
 
   .card-home {

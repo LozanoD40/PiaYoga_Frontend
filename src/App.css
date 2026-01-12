@@ -44,7 +44,7 @@
 :root {
   --color-bg-main: #ffffff; /* Fondo principal */
   --color-bg-secondary: #e8daef; /* Lavanda suave */
-  --color-bg-accent: #9b59b6; /* Violeta medio (navbar, botones principales) */
+  --color-bg-accent: rgb(155, 89, 182); /* Violeta medio (navbar, botones principales) */
   --color-bg-alt: #27ae60; /* Verde hoja (botones secundarios, acentos) */
 
   --color-text-primary: #4a235a; /* Títulos en violeta profundo */

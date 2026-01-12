@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
-import '../Styles/recompensa.css'
 
-export default function Accesorios() {
+export default function Recompensa() {
   const [recompensas, setRecompensas] = useState([])
   const [categoriaActiva, setCategoriaActiva] = useState('todas')
   const [rarezaActiva, setRarezaActiva] = useState('todas')
@@ -91,25 +90,7 @@ export default function Accesorios() {
         </div>
       )}
 
-      <div>
-        <div className="postura-wrapper">
-          <img
-            src="/posturas/arbol.png"
-            className="postura-base"
-            alt="Postura Árbol"
-          />
 
-          {/* Skin: cabeza */}
-          <img
-            src="/skins/perro-head.png"
-            className="skin-head"
-            alt="Skin perro"
-          />
-
-          {/* Aura opcional */}
-          <div className="aura aura-verde" />
-        </div>
-      </div>
     </div>
   )
 }
