@@ -139,11 +139,18 @@
     transform: translateX(0);
   }
 
-
-  50% { transform: scale(1.05); }
-  60% { transform: scale(0.99); }
-  70% { transform: scale(1.08); }
-  80% { transform: scale(1); }
+  50% {
+    transform: scale(1.05);
+  }
+  60% {
+    transform: scale(0.99);
+  }
+  70% {
+    transform: scale(1.08);
+  }
+  80% {
+    transform: scale(1);
+  }
   /* --- pausa final --- */
   100% {
     transform: translateX(0);
@@ -659,6 +666,13 @@
 }
 
 /* RESPONSIVE */
+@media (max-width: 1024px) {
+  .testimonio-text {
+    font-size: 1rem;
+    font-weight: bold;
+  }
+}
+
 @media (max-width: 768px) {
   .testimonios-container {
     gap: 2rem;
@@ -666,9 +680,5 @@
 
   .testimonio-card {
     max-width: 100%;
-  }
-
-  .testimonio-text {
-    font-size: 0.95rem;
   }
 }
