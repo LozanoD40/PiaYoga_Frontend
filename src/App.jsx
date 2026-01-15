@@ -8,6 +8,7 @@ import HorariosDisponibles from './Pages/horario.jsx'
 import Posturas from './Pages/posturas.jsx'
 import Rutina from './Pages/rutina.jsx'
 import Perfil from './Pages/perfil.jsx'
+
 function App() {
   return (
     <>

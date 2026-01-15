@@ -4,7 +4,7 @@ import VerMenos from '../../assets/Posturas/verMenos.svg'
 import VerMas from '../../assets/Posturas/verMas.svg'
 import BodyMapSVG from './svgBody'
 
-function PosturaCard({ postura }) {
+function PosturaCard({ postura , activa}) {
   const [isExpanded, setIsExpanded] = useState(false)
 
   const toggleExpand = () => setIsExpanded(!isExpanded)
@@ -24,9 +24,17 @@ function PosturaCard({ postura }) {
             <h3 className="card-title">{postura.nombre}</h3>
 
             <div className="stats-row">
-              <span>Dificultad: {postura.dificultad}/5</span>
-              <span>⏱ {postura.tiempoMinutos} min</span>
-              <span>🔥 {postura.energiaGastada || 25} kcal</span>
+              <span className="stats-data">
+                Dificultad: {postura.dificultad}/5
+              </span>
+              <div className={`stast-card ${activa ? 'activa' : ''}`}>
+                <span className="stats-data">
+                  ⏱ {postura.tiempoMinutos} min
+                </span>
+              </div>
+              <span className="stats-data">
+                🔥 {postura.energiaGastada || 25} kcal
+              </span>
             </div>
 
             <p className="card-short-desc">{postura.descripcionCorta}</p>
@@ -45,9 +53,13 @@ function PosturaCard({ postura }) {
             <h3 className="card-title detalle-title">{postura.nombre}</h3>
 
             <div className="stats-row detalle-stats">
-              <span>Dificultad: {postura.dificultad}/5</span>
-              <span>⏱ {postura.tiempoMinutos} min</span>
-              <span>🔥 {postura.energiaGastada || 25} kcal</span>
+              <span className="stats-data">
+                Dificultad: {postura.dificultad}/5
+              </span>
+              <span className="stats-data">⏱ {postura.tiempoMinutos} min</span>
+              <span className="stats-data">
+                🔥 {postura.energiaGastada || 25} kcal
+              </span>
             </div>
 
             <p className="card-long-desc">{postura.descripcionLarga}</p>

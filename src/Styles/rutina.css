@@ -1,236 +1,356 @@
-/* ===== CONTENEDOR GENERAL ===== */
-.rutina-page {
-  width: min(1800px, 95vw);
-  margin: 0 auto;
-  padding: 32px 24px;
-}
-
-/* ===== TITULOS ===== */
-.rutina-title {
-  font-size: min(1.5rem, 3rem);
-  font-weight: 600;
-  margin-bottom: 16px;
-}
-
-.rutina-subtitle {
-  font-size: 1.4rem;
-  margin-bottom: 16px;
-  color: #333;
-}
-
-/* ===== SELECT ===== */
-.rutina-select {
-  display: flex;
-  justify-content: left;
-  padding: 12px 16px;
-  font-size: 1rem;
-  border-radius: 10px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  min-width: 260px;
-  cursor: pointer;
-  transition: border 0.2s ease, box-shadow 0.2s ease;
-}
-
-.rutina-select:focus {
-  outline: none;
-  border-color: var(--color-border);
-  box-shadow: var(--shadow-card);
-}
-
-/* ===== LISTA DE RUTINAS ===== */
-.rutina-list {
-  margin-top: 32px;
-}
-
-.rutina-items {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 12px;
-}
-
-.rutina-empty {
-  color: #777;
-  font-style: italic;
-}
-
-/* ===== ITEM ===== */
-.rutina-item {
-  display: flex;
-  padding: 16px 20px;
-  border-radius: 14px;
-  background: var(--color-bg-secondary);
-  border: 1px solid #e5e5e5;
-  cursor: pointer;
-  justify-content: space-between;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.rutina-item:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-}
-
-.rutina-item-header {
-  display: flex;
-  align-items: center;
-}
-
-.rutina-action {
-  font-size: 0.9rem;
-  color: var(--color-text-primary);
-  font-weight: 500;
-}
-
-/* ===== DETALLES ===== */
-.rutina-detail {
-  margin-top: 48px;
-  padding: 28px;
-  border-radius: 18px;
-  background: #f9fafb;
-  border: 1px solid #e0e0e0;
-}
-
-.rutina-detail h2 {
-  margin-bottom: 16px;
-}
-
-.rutina-metadata {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 12px;
-  margin-bottom: 24px;
-}
-
-.rutina-metadata p {
-  margin: 0;
-  font-size: 0.95rem;
-  color: #444;
-}
-
-/*======= MUSICA ===========*/
-.rutina-music-selector {
-  margin: 20px 0;
-  padding: 16px;
-  border-radius: 12px;
-  background: var(--color-bg-secondary);
+/* CONTENEDOR GENERAL */
+.rutina-container {
   display: flex;
   flex-direction: column;
-  gap: 12px;
   align-items: center;
+  gap: 8px;
+  padding: 24px 0 48px;
+  background-color: var(--color-bg-secondary);
 }
 
-.rutina-music-selector select {
-  padding: 8px 12px;
-  border-radius: 8px;
-  border: 1px solid var(--color-border);
+/* TÍTULO */
+.rutina-container h1 {
+  text-align: center;
 }
 
-.rutina-music-selector button {
-  padding: 0.75rem 2.2rem;
-  margin: 1rem 0;
-  border-radius: 999px;
-  border: 1px solid var(--color-border);
-  background-color: rgb(155, 89, 182, 0.4);
-  cursor: pointer;
-  transition: all 0.3s ease;
+/* SUBTÍTULO */
+.rutina-container h3 {
+  text-align: center;
+  font-weight: 400;
 }
 
-.rutina-music-selector button:hover {
-  background-color: var(--color-bg-accent);
-  color: #ffffff;
-  transform: scale(0.95);
+.rutina-card {
+  width: 90vw;
+  margin-bottom: 1rem;
 }
 
-/* ================== MODAL OVERLAY ================== */
-.modal-overlay-rutina {
-  position: fixed;
-  inset: 0;
-  background: rgba(74, 35, 90, 0.3); 
-  z-index: 1000;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* ================== MODAL CONTENIDO ================== */
-.modal-content-rutina {
-  width: min(800px, 90vw);
-  max-height: 90vh;
-  overflow-y: auto;
-
-  border-radius: 20px;
-  padding: 32px;
+/* SUMMARY */
+.rutina-summary {
   position: relative;
-
-  box-shadow: var(--shadow-card);
-  animation: modalFadeIn 0.25s ease-out;
+  height: 220px;
+  overflow: hidden;
+  cursor: pointer;
+  list-style: none;
 }
 
-/* ================== BOTÓN CERRAR ================== */
-.modal-close-rutina {
+.rutina-summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Imagen de fondo */
+.rutina-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+  transition: transform 0.5s ease;
+}
+
+/* CONTENEDOR DEL H2 */
+.rutina-info {
   position: absolute;
-  top: 14px;
-  right: 16px;
-
-  background: transparent;
-  border: none;
-  font-size: 1.4rem;
-  color: var(--color-text-primary);
-  cursor: pointer;
-  transition: transform 0.2s ease, color 0.2s ease;
+  right: 20px;
+  bottom: 24px;
+  z-index: 2;
 }
 
-.modal-close-rutina:hover {
-  transform: scale(1.15);
-  color: var(--color-text-hover);
-}
-
-/* ================== AJUSTES DEL DETALLE EN MODAL ================== */
-.modal-content-rutina.rutina-detail {
-  margin-top: 0; /* elimina comportamiento de layout normal */
-  border: 1px solid var(--color-border);
-  scrollbar-color: var(--color-bg-accent) #dbdbdbcc;
-  scroll-behavior: smooth;
-  scrollbar-width: thin;
-}
-
-/* ================== ANIMACIÓN ================== */
-@keyframes modalFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px) scale(0.96);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-.rutina-play-btn {
-  padding: 1rem 2.5rem;
-  border-radius: 999px;
-  border: none;
-  background: var(--color-bg-accent);
+/* H2 – extremo derecho, ligeramente elevado */
+.rutina-info h2 {
+  font-family: var(--font-title);
+  font-size: clamp(0.8rem, 2vw, 1rem);
   color: var(--color-text-tertiary);
-  font-size: 1rem;
+  padding: 14px 50px;
+  background-color: var(--color-bg-accent);
+
+  clip-path: polygon(0% 0%, 100% 0%, 90% 50%, 100% 100%, 0% 100%, 10% 50%);
+}
+
+/* Hover */
+.rutina-summary:hover .rutina-img {
+  transform: scale(1.05);
+}
+
+.rutina-card section {
+  background-color: var(--color-bg-main);
+}
+
+.rutina-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 20px;
+}
+
+.rutina-desc {
+  position: relative;
+  padding-left: 14px;
+  line-height: 1.5;
+  color: var(--color-text-primary);
+}
+
+.rutina-desc::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 4px;
+  width: 4px;
+  height: calc(100% - 8px);
+  background-color: var(--color-bg-accent);
+  border-radius: 4px;
+}
+
+.rutina-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.rutina-badges-info {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  width: 100%;
+}
+
+.rutina-badges .badges-info {
+  flex: 1;
+  height: 50px;
+  background-color: var(--color-bg-secondary);
+  align-content: center;
+  padding: 8px 14px;
+  border-radius: 14px;
+  border: var(--color-border) 1px solid;
+  font-size: 0.8rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.btn-rutina-iniciar {
+  display: flex;
+  gap: 1rem;
+  margin-top: 14px;
+  justify-content: center;
+  align-content: center;
+  flex-direction: column;
+}
+
+.rutina-start-btn,
+.rutina-music-btn {
+  margin-top: 10px;
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background-color: var(--color-bg-accent);
+  color: var(--color-text-tertiary);
+  border: none;
+  border-radius: 14px;
   cursor: pointer;
-  margin-bottom: 20px;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.rutina-play-btn:hover {
-  transform: scale(0.96);
-  box-shadow: var(--shadow-card);
+.rutina-start-btn:hover,
+.rutina-badges span:hover,
+.rutina-music-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
-.contador {
-  margin-top: 16px;
-  font-size: 1.2rem;
-  font-weight: 600;
+.rutina-start-btn:active,
+.rutina-music-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+/*===============MUSICA LISTA===============*/
+.rutina-musica {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.music-player {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  background: var(--color-bg-secondary);
+  border-radius: 18px;
+  border: var(--color-border) 1px solid;
+  width: 100%;
+}
+
+.player-cover {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 12px;
+  border: var(--color-border) 1px solid;
+  flex-shrink: 0;
+}
+
+.player-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 10px;
+}
+
+.player-info strong {
+  display: flex;
+  flex-direction: column;
+  font-size: 1rem;
+}
+
+.player-info span {
+  font-size: 0.85rem;
+}
+
+.volume-control button {
+  margin-left: 1rem;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.volume-control button img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  display: block;
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.volume-control input {
+  width: 80px;
+  accent-color: var(--color-text-primary);
+}
+
+.controls-progress {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.player-progress {
+  width: 80%;
+  height: 4px;
+  background: rgb(74, 35, 90, 0.5);
+  border-radius: 999px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.player-progress-bar {
+  height: 100%;
+  background: var(--color-text-primary);
+}
+
+.player-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  margin-right: 72px;
+}
+
+.player-controls button {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+}
+
+.player-controls button:hover {
   color: var(--color-text-primary);
-  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .music-player {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .player-controls {
+    margin-right: 0;
+  }
+
+  .player-content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .controls-progress {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .player-progress {
+    width: 100%;
+  }
+}
+
+/*================Temporizador================*/
+@property --t {
+  syntax: '<number>';
+  initial-value: 100;
+  inherits: true;
+}
+
+.countdown-wrapper {
+  --d: 5em;
+  --t-total: 10;
+
+  display: grid;
+  width: var(--d);
+  height: var(--d);
+  margin: 2em auto;
+  place-items: center;
+  font-family: 'Ubuntu Mono', monospace;
+  font-weight: bold;
+  font-size: calc(var(--d) / 5);
+  /* La animación dura los segundos que le pasemos */
+  animation: timer-run calc(var(--t-total) * 1s) linear infinite;
+}
+
+.countdown-wrapper::after {
+  grid-area: 1/1;
+  /* Redondeamos el valor decimal de --t a entero */
+  counter-reset: s calc(round(down, var(--t), 1));
+  content: '0:' counter(s, decimal-leading-zero);
+}
+
+.timer-svg {
+  grid-area: 1/1;
+  width: 100%;
+  height: 100%;
+  transform: rotate(-90deg);
+  fill: none;
+  stroke-width: 8;
+}
+
+.circle-bg {
+  stroke: #e0e0e0;
+}
+
+.circle-prog {
+  stroke-linecap: round;
+  --k: calc(var(--t) / var(--t-total));
+  stroke-dasharray: var(--k) 1;
+  /* Mezcla de colores: del verde (#8a9b0f) al granate (#940a3d) */
+  stroke: color-mix(in hsl, #8a9b0f, #940a3d calc((1 - var(--k)) * 100%));
+}
+
+@keyframes timer-run {
+  from {
+    --t: var(--t-total);
+  }
+  to {
+    --t: 0;
+  }
 }

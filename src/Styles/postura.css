@@ -61,13 +61,18 @@
   margin: 1rem 0;
 }
 
-.stats-row span {
+.stats-row .stats-data {
   background: var(--color-bg-secondary);
   color: var(--color-text-primary);
   padding: 6px 12px;
   font-size: 0.75rem;
   border-radius: 999px;
   font-weight: 500;
+  display: flex;
+}
+
+.stats-row .stats-data:hover{
+  transition: none;
 }
 
 /*DESCRIPCIÓN*/
@@ -149,7 +154,7 @@
   margin-bottom: 1.5rem;
 }
 
-.detalle-stats span {
+.detalle-stats .stats-data {
   font-size: 0.85rem;
   padding: 4px 10px;
   border-radius: 999px;
@@ -291,7 +296,7 @@
     max-height: 180px;
   }
 
-  .stats-row span {
+  .stats-row .stats-data {
     font-size: 0.7rem;
     padding: 5px 10px;
   }
