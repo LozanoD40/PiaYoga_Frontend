@@ -69,11 +69,21 @@
   --font-size-body-lg: clamp(1.2rem, 2rem, 2.2rem);
   --font-size-body-sh: clamp(0.5rem, 0.9rem, 1rem);
   --font-size-footer: clamp(12px, 16px, 20px);
-  --font-size-card: clamp(0.8rem, 2vw, 1rem);
+  --font-size-card: clamp(1rem, 2vw, 2rem);
   --icon-size: 20px;
 
   --box-shadow-navbar: 0 4px 8px rgba(155, 89, 182, 0.2);
   --shadow-card: 0 5px 15px rgba(0, 0, 0, 0.1);
+
+    /* ================= BRIDGE PERFIL ================= */
+  --perfi-bg: var(--color-bg-main);
+  --perfi-card-bg: var(--color-bg-secondary);
+  --perfi-primary: var(--color-bg-accent);
+  --perfi-text-main: var(--color-text-primary);
+  --perfi-text-muted: rgba(74, 35, 90, 0.65);
+  --perfi-radius: 16px;
+  --perfi-shadow: var(--shadow-card);
+
 }
 
 body {

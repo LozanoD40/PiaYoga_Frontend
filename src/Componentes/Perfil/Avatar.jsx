@@ -59,7 +59,7 @@ export default function Avatar() {
       if (res.ok) {
         const usuarioActualizado = await res.json()
         setPerfil(usuarioActualizado)
-        alert('Perfil actualizado correctamente')
+        setMostrarFormulario(false)
       }
     } catch (error) {
       console.error('Error al actualizar:', error)
@@ -70,66 +70,118 @@ export default function Avatar() {
   if (!perfil) return null
 
   return (
-    <section className="avatar-card">
-      <div className="Avatar-img">
-        <div className="avatar-header">
-          {perfil.avatar ? (
-            <img src={`${SERVIDOR}${perfil.avatar}`} className="avatar-img" />
-          ) : (
-            <div className="avatar-placeholder">{perfil.nombre.charAt(0)}</div>
-          )}
-        </div>
+    <section className="perfil-user-card">
+      {/* Avatar */}
+      <div
+        className="perfil-avatar-large"
+        style={{
+          backgroundImage: perfil.avatar
+            ? `url(${SERVIDOR}/${perfil.avatar})`
+            : 'none',
+        }}
+      >
+        {!perfil.avatar && (
+          <span className="perfil-avatar-placeholder">
+            {perfil.nombre.charAt(0)}
+          </span>
+        )}
       </div>
-      <div className="Avatar-informacion">
-        <div className="avatar-info">
-          <h2>{perfil.nombre}</h2>
-          <p>{perfil.email}</p>
-        </div>
 
-        <h3
-          className={`toggle-title ${mostrarFormulario ? 'active' : ''}`}
+      {/* Info usuario */}
+      <div className="perfil-user-info">
+        <h1 className="perfil-user-name">{perfil.nombre}</h1>
+        <p className="perfil-user-email">{perfil.email}</p>
+      </div>
+
+      <div>
+        <button
+          className="perfil-edit-button"
           onClick={() => setMostrarFormulario(!mostrarFormulario)}
         >
           <img
             src={Ajustes}
-            alt="Actualizar perfil"
-            className="avatar-ajustes"
+            alt="Editar perfil"
+            className="perfil-edit-button-img"
           />
-          Actualizar perfil
-        </h3>
+          <span className="material-symbols-outlined"></span>
+          Editar perfil
+        </button>
 
-        <div className={`form-container ${mostrarFormulario ? 'show' : ''}`}>
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              value={datos.nombre}
-              onChange={(e) => setDatos({ ...datos, nombre: e.target.value })}
-              placeholder="Nombre"
-            />
+        {mostrarFormulario && (
+          <div
+            className="perfi-modal-overlay"
+            onClick={() => setMostrarFormulario(false)}
+          >
+            <div className="perfi-modal" onClick={(e) => e.stopPropagation()}>
+              <header className="perfi-modal-header">
+                <h2>Editar perfil</h2>
+                <button
+                  className="perfi-modal-close"
+                  onClick={() => setMostrarFormulario(false)}
+                >
+                  ×
+                </button>
+              </header>
 
-            <input
-              type="email"
-              value={datos.email}
-              onChange={(e) => setDatos({ ...datos, email: e.target.value })}
-              placeholder="Email"
-            />
+              <form className="perfi-modal-form" onSubmit={handleSubmit}>
+                <input
+                  type="text"
+                  value={datos.nombre}
+                  onChange={(e) =>
+                    setDatos({ ...datos, nombre: e.target.value })
+                  }
+                  placeholder="Nombre"
+                />
 
-            <input
-              type="password"
-              placeholder="Nueva contraseña"
-              value={datos.password}
-              onChange={(e) => setDatos({ ...datos, password: e.target.value })}
-            />
+                <input
+                  type="email"
+                  value={datos.email}
+                  onChange={(e) =>
+                    setDatos({ ...datos, email: e.target.value })
+                  }
+                  placeholder="Email"
+                />
 
-            <input
-              type="file"
-              accept="image/*"
-              onChange={(e) => setArchivo(e.target.files[0])}
-            />
+                <input
+                  type="password"
+                  value={datos.password}
+                  onChange={(e) =>
+                    setDatos({ ...datos, password: e.target.value })
+                  }
+                  placeholder="Nueva contraseña"
+                />
 
-            <button type="submit">Guardar cambios</button>
-          </form>
-        </div>
+                <div className="perfi-file-field">
+                  <label className="perfi-file-label">
+                    <input
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) => setArchivo(e.target.files[0])}
+                      hidden
+                    />
+                    <span className="perfi-file-text">
+                      Seleccionar imagen de perfil
+                    </span>
+                  </label>
+                </div>
+
+                <div className="perfi-modal-actions">
+                  <button
+                    type="button"
+                    className="perfi-button-secondary"
+                    onClick={() => setMostrarFormulario(false)}
+                  >
+                    Cancelar
+                  </button>
+
+                  <button type="submit" className="perfi-edit-button">
+                    Guardar cambios
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   )
