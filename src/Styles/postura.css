@@ -328,3 +328,62 @@
     height: 14px;
   }
 }
+
+
+/*====================Filtros======================*/
+/* ================= POSTURA FILTROS ================= */
+
+.postura-filtro-contenedor {
+  display: flex;
+  gap: 16px;
+  padding: 18px;
+  margin: 20px 0;
+  border-radius: var(--perfi-radius);
+  animation: fadeIn 0.4s ease;
+}
+
+/* Cada filtro */
+.postura-filtro-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--font-main);
+}
+
+/* Labels */
+.postura-filtro-item label {
+  font-size: var(--font-size-body);
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+/* Selects */
+.postura-filtro-item select {
+  padding: 10px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg-main);
+  color: var(--color-text-secondary);
+  font-family: var(--font-main);
+  font-size: var(--font-size-body);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* Hover */
+.postura-filtro-item select:hover {
+  border-color: var(--color-text-hover);
+}
+
+/* Focus */
+.postura-filtro-item select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(155, 89, 182, 0.25);
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .postura-filtro-contenedor {
+    flex-direction: column;
+  }
+}

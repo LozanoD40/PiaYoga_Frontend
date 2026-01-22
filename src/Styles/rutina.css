@@ -295,6 +295,50 @@
   }
 }
 
+/*SPOTIFY*/
+/* ================= SPOTIFY RUTINA ================= */
+
+.rutina-spotify-box {
+  padding: 16px;
+  background: var(--color-bg-secondary);
+  border-radius: 18px;
+  font-weight: 600;
+}
+
+.rutina-spotify-details {
+  cursor: pointer;
+}
+
+/* Summary */
+.rutina-spotify-summary {
+  font-family: var(--font-main);
+  font-size: var(--font-size-body-sh);
+  color: var(--color-text-primary);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Quitar flecha default */
+.rutina-spotify-summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Iframe */
+.rutina-spotify-iframe {
+  margin-top: 14px;
+  border-radius: 14px;
+  border: none;
+  box-shadow: inset 0 0 0 1px var(--color-outline);
+  animation: fadeInScale 0.35s ease;
+}
+
+.rutina-spotify-box:hover {
+  transform: scale(1.01) translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
 /*================Temporizador================*/
 @property --t {
   syntax: '<number>';
@@ -316,13 +360,6 @@
   font-size: calc(var(--d) / 5);
   /* La animación dura los segundos que le pasemos */
   animation: timer-run calc(var(--t-total) * 1s) linear infinite;
-}
-
-.countdown-wrapper::after {
-  grid-area: 1/1;
-  /* Redondeamos el valor decimal de --t a entero */
-  counter-reset: s calc(round(down, var(--t), 1));
-  content: '0:' counter(s, decimal-leading-zero);
 }
 
 .timer-svg {
